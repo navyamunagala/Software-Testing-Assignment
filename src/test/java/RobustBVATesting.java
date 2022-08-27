@@ -32,11 +32,12 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("input[type = password]")).sendKeys(PASSWORD);
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
         WebElement element = driver.findElement(By.xpath("//span[contains(text(),'Email is required')]"));
-        assertEquals("Email is required",element.getText());
+        assertEquals("Email is required", element.getText());
 
     }
-@Test
-     void exit_InvalidEmailTest() {
+
+    @Test
+    void exit_InvalidEmailTest() {
         driver.get(BASE_WEB_URL);
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
         driver.findElement(By.cssSelector("a[class = 'item']")).click();
@@ -44,9 +45,10 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("input[type = password]")).sendKeys(PASSWORD);
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
         WebElement element = driver.findElement(By.xpath("//span[contains(text(),'Please enter a valid email')]"));
-        assertEquals("Please enter a valid email",element.getText());
+        assertEquals("Please enter a valid email", element.getText());
     }
-// less than 6
+
+    // less than 6
     @Test
     void pwdlenlessthansix_Test1() {
         driver.get(BASE_WEB_URL);
@@ -56,7 +58,7 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("input[type = password]")).sendKeys("snflu");
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
         WebElement element = driver.findElement(By.xpath("//span[contains(text(),'Password length should be between 6 and 20 characters')]"));
-        assertEquals("Password length should be between 6 and 20 characters",element.getText());
+        assertEquals("Password length should be between 6 and 20 characters", element.getText());
 
     }
 
@@ -71,10 +73,10 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfgnngjyhjj");
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
         WebElement element = driver.findElement(By.xpath("//span[contains(text(),'Password length should be between 6 and 20 characters')]"));
-        assertEquals("Password length should be between 6 and 20 characters",element.getText());
+        assertEquals("Password length should be between 6 and 20 characters", element.getText());
     }
 
-// pwd length seven
+    // pwd length seven
     @Test
     void pwdlenlessthanmorethansix_Test3() {
         driver.get(BASE_WEB_URL);
@@ -97,16 +99,17 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
 
     }
-// pwd length nineteen
-@Test
-void valid_lenpwd_nineteen_Test5() {
-    driver.get(BASE_WEB_URL);
-    driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
-    driver.findElement(By.cssSelector("a[class = 'item']")).click();
-    driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
-    driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfgnngjyh");
-    driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
-}
+
+    // pwd length nineteen
+    @Test
+    void valid_lenpwd_nineteen_Test5() {
+        driver.get(BASE_WEB_URL);
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
+        driver.findElement(By.cssSelector("a[class = 'item']")).click();
+        driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
+        driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfgnngjyh");
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
+    }
 
 //pwd length twenty
 
@@ -133,7 +136,7 @@ void valid_lenpwd_nineteen_Test5() {
     }
 
 
-@AfterTest
+    @AfterTest
     void tearDown() {
         driver.close();
     }
