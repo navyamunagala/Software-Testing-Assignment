@@ -51,7 +51,7 @@ public class TestBookHouseWebPage {
 
         //Assert with no of results found for the search of Books.
         String searchFoundText = driver.findElement(By.xpath("//div[@class='sc-Axmtr gsVDHI']")).getText();
-        assertEquals("(172 results found)", searchFoundText);
+        assertEquals("(173 results found)", searchFoundText);
     }
 
 

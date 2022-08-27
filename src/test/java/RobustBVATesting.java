@@ -62,8 +62,7 @@ public class RobustBVATesting {
 
     }
 
-// pwd length more than 20
-
+    // pwd length more than 20
     @Test
     void Invalid_lenpwd_twenty_Test2() {
         driver.get(BASE_WEB_URL);
@@ -111,8 +110,7 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
     }
 
-//pwd length twenty
-
+   //pwd length twenty
     @Test
     void valid_lenpwd_twenty_Test6() {
         driver.get(BASE_WEB_URL);
@@ -122,7 +120,6 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfgnngjyhj");
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
     }
-
 
     //nominal
     @Test
@@ -134,7 +131,6 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfg");
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
     }
-
 
     @AfterTest
     void tearDown() {
