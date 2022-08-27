@@ -1,7 +1,7 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
@@ -14,13 +14,13 @@ public class TestBookHouseWebPage {
     public static final String EMAIL_ID = "2021ct93022@wilp.bits-pilani.ac.in";
     public static final String PASSWORD = "Hello12#";
     public static final String BASE_WEB_URL = "https://www.sapnaonline.com/";
-    public static final String FIREFOX_DRIVER_ABSOLUTE_PATH = "C:\\Users\\KR-PC\\Desktop\\BITS Mtech. Software Engineering program\\Sem-2\\3.Software-Testing-Methodologies\\Assignment\\geckodriver.exe";
+    public static final String CHROME_DRIVER_ABSOLUTE_PATH = "C:\\Users\\KR-PC\\Desktop\\BITS Mtech. Software Engineering program\\Sem-2\\3.Software-Testing-Methodologies\\Assignment\\chrome-driver\\chromedriver.exe";
     WebDriver driver;
 
     @BeforeTest
     void setUp() {
-        System.setProperty("webdriver.gecko.driver", FIREFOX_DRIVER_ABSOLUTE_PATH);
-        driver = new FirefoxDriver();
+        System.setProperty("webdriver.chrome.driver", CHROME_DRIVER_ABSOLUTE_PATH);
+        driver = new ChromeDriver();
     }
 
     @Test
@@ -51,7 +51,7 @@ public class TestBookHouseWebPage {
 
         //Assert with no of results found for the search of Books.
         String searchFoundText = driver.findElement(By.xpath("//div[@class='sc-Axmtr gsVDHI']")).getText();
-        assertEquals("(175 results found)", searchFoundText);
+        assertEquals("(172 results found)", searchFoundText);
     }
 
 
@@ -68,7 +68,7 @@ public class TestBookHouseWebPage {
     }
 
     @Test
-    void validateProfileDetailsPostLogin() {
+    void navigateToProfileDetailsPostLogin() {
         driver.get(BASE_WEB_URL);
         //User login
         loginWithUserCredentials();
@@ -76,10 +76,29 @@ public class TestBookHouseWebPage {
         clickOnMyAccountElement();
 
         driver.findElement(By.xpath("//div[contains(text(),'My Profile')]")).click();
-        WebElement fullNameElement;
-        WebDriverWait wait = new WebDriverWait(driver, 100);
-        fullNameElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//div[@class='sc-AxirZ iiXpac']//div[@class='ui input web-rx input sc-fznZeY cAabCB']//input[@type='text']")));
-        assertEquals("Karthik R", fullNameElement.getText());
+
+        WebElement profileElement = driver.findElement(By.xpath("//body/div[@id='__next']/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[2]/div[1]/div[1]/div[1]"));
+        WebElement fullNameElement = driver.findElement(By.xpath("//label[contains(text(),'Full Name')]"));
+
+        assertEquals("My Profile", profileElement.getText());
+        assertEquals("Full Name", fullNameElement.getText());
+    }
+
+    @Test
+    void navigateToMyOrdersPostLogin() {
+        driver.get(BASE_WEB_URL);
+        //User login
+        loginWithUserCredentials();
+
+        clickOnMyAccountElement();
+
+        driver.findElement(By.xpath("//div[contains(text(),'My Orders')]")).click();
+
+        WebElement myOrdersElement = driver.findElement(By.xpath("//body/div[@id='__next']/div[1]/div[1]/div[3]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/div[1]/a[1]/div[1]/div[2]/div[1]"));
+        WebElement noOrdersElement = driver.findElement(By.xpath("//div[contains(text(),'No orders to show in selected date range')]"));
+
+        assertEquals("My Orders", myOrdersElement.getText());
+        assertEquals("No orders to show in selected date range", noOrdersElement.getText());
     }
 
     private void loginWithUserCredentials() {
