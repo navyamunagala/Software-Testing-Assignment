@@ -2,8 +2,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -131,6 +129,20 @@ public class RobustBVATesting {
         driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfg");
         driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
     }
+   // password left blank
+    @Test
+    void pwd_blankTest8() {
+        driver.get(BASE_WEB_URL);
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
+        driver.findElement(By.cssSelector("a[class = 'item']")).click();
+        driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
+        driver.findElement(By.cssSelector("input[type = password]")).sendKeys("");
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
+        WebElement element = driver.findElement(By.xpath("//span[contains(text(),'Password is required')]"));
+        assertEquals("Password is required", element.getText());
+
+    }
+
 
     @AfterTest
     void tearDown() {
