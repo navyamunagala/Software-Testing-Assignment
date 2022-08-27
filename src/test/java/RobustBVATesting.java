@@ -74,9 +74,66 @@ public class RobustBVATesting {
         assertEquals("Password length should be between 6 and 20 characters",element.getText());
     }
 
+// pwd length seven
+    @Test
+    void pwdlenlessthanmorethansix_Test3() {
+        driver.get(BASE_WEB_URL);
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
+        driver.findElement(By.cssSelector("a[class = 'item']")).click();
+        driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
+        driver.findElement(By.cssSelector("input[type = password]")).sendKeys("snfluui");
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
+
+    }
+
+    // pwd length six
+    @Test
+    void pwdlensix_Test4() {
+        driver.get(BASE_WEB_URL);
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
+        driver.findElement(By.cssSelector("a[class = 'item']")).click();
+        driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
+        driver.findElement(By.cssSelector("input[type = password]")).sendKeys("snfluu");
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
+
+    }
+// pwd length nineteen
+@Test
+void valid_lenpwd_nineteen_Test5() {
+    driver.get(BASE_WEB_URL);
+    driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
+    driver.findElement(By.cssSelector("a[class = 'item']")).click();
+    driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
+    driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfgnngjyh");
+    driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
+}
+
+//pwd length twenty
+
+    @Test
+    void valid_lenpwd_twenty_Test6() {
+        driver.get(BASE_WEB_URL);
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
+        driver.findElement(By.cssSelector("a[class = 'item']")).click();
+        driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
+        driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfgnngjyhj");
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
+    }
 
 
-    @AfterTest
+    //nominal
+    @Test
+    void valid_nominal_Test7() {
+        driver.get(BASE_WEB_URL);
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr cTkVAB']")).click();
+        driver.findElement(By.cssSelector("a[class = 'item']")).click();
+        driver.findElement(By.cssSelector("input[type = email]")).sendKeys(EMAIL_ID);
+        driver.findElement(By.cssSelector("input[type = password]")).sendKeys("dfngkdlgnkdfg");
+        driver.findElement(By.cssSelector("div[class = 'sc-Axmtr iPDAko ButtonText']")).click();
+    }
+
+
+@AfterTest
     void tearDown() {
         driver.close();
     }
